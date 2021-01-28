@@ -11,7 +11,7 @@ import NotFound from "./paginas/notFound";
 
 //import componentes
 import Navegacion from "./Componentes/navegacion";
-//import Footer from "./Componentes/footer";
+import PiePagina from "./Componentes/footer/piePagina";
 
 //importo pagina de pruebas
 import PaginaPrueba from "./paginasPrueba/categoriaN";
@@ -46,6 +46,7 @@ const App = () => {
           <NotFound />
         </Route>
       </Switch>
+      <PiePagina />
     </Router>
   );
 };

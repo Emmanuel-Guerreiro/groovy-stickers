@@ -1,7 +1,13 @@
 import React from "react";
 
+import CarouselImagenes from "../Componentes/carousel";
+
 const Home = () => {
-  return <div>Soy el home</div>;
+  return (
+    <div>
+      <CarouselImagenes />
+    </div>
+  );
 };
 
 export default Home;

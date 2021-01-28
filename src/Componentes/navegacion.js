@@ -20,14 +20,20 @@ y etiquetas o algo asi */
 const Navegacion = () => {
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        sticky="top"
+      >
         <LinkContainer to="/">
           <Navbar.Brand>Groovy</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <LinkContainer to="/home">
+            <LinkContainer to="/">
               <Nav.Link>Inicio</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/productos">
