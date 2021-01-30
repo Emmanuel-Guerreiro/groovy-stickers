@@ -19,6 +19,18 @@ import PaginaPrueba from "./paginasPrueba/categoriaN";
 //TODO: una vez listo el tema de las paginas de prueba borrar el import y el camino hacia estas
 //TODO: Agrandar foto del icono en la barra de pestañas
 
+/*COMENTARIO de ESTADO:
+Logrado conseguir las imagenes de una "carpeta" de storage. 
+Necesito formatear bien las presentaciones
+Optimizar tamaño imagenes y subirlas
+Sacar de donde corresponda para las distintas aplicaciones
+Armar la presentacion de una categoria especial
+Armar la presentacion (mas detalles) de un sticker
+Armar "Como-comprar"
+Terminar Home page
+Terminar la funcionalidad del form en Contacto
+ */
+
 const App = () => {
   return (
     <Router>

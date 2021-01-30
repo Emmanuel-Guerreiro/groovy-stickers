@@ -1,62 +1,70 @@
 import React, { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { app } from "../firebase/base";
+import { LinkContainer } from "react-router-bootstrap";
 
-const imagenes1 = [
-  {
-    nombre: "foto1",
-    src: "https://picsum.photos/1024/300",
-    texto:
-      '"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."',
-  },
-  {
-    nombre: "foto2",
-    src: "https://picsum.photos/1024/300",
-    texto:
-      "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...",
-  },
-  {
-    nombre: "foto3",
-    src: "https://picsum.photos/1024/300",
-    texto:
-      "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...",
-  },
-];
+//TODO: agregar el spin de loading como esta hecho en categoriasStickers.js
 
 const CarouselImagenes = () => {
   const [imagenes, setImagenes] = useState([]);
   const [buscar, setBuscar] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  var arrayAyuda = [];
+
+  const funcionShow = async (imageRef) => {
+    const url = await imageRef.getDownloadURL();
+    arrayAyuda.push(url);
+    setImagenes(arrayAyuda);
+  };
 
   useEffect(() => {
-    if (buscar) {
-      const storage = app.storage();
-      const referencia = storage.refFromURL(
-        "gs://implementacion1.appspot.com/A/A1.jpg"
-      );
+    const buscarImagenes = async () => {
+      if (buscar) {
+        const storage = app.storage();
+        const referenciaCarpeta = storage.refFromURL(
+          "gs://implementacion1.appspot.com/A/"
+        );
+        referenciaCarpeta.listAll().then((imagenesObtenidas) => {
+          imagenesObtenidas.items.forEach((imageRef) => {
+            funcionShow(imageRef);
+          });
+        });
 
-
-
-      setImagenes(await referencia.child('A/A1.jpg').getDownloadURL());
-      console.log(imagenes);
-      setBuscar(false);
-    }
+        setTimeout(() => {
+          setLoading((prevState) => !prevState);
+        }, 3000);
+        console.log(imagenes);
+        setBuscar((prevState) => !prevState);
+      }
+    };
+    buscarImagenes();
   }, [imagenes]);
 
   return (
-    <Carousel>
-      {imagenes1.map((objeto) => {
-        return (
-          <Carousel.Item key={objeto.nombre}>
-            <img className="d-block w-100" src={objeto.src} alt="First slide" />
-            <Carousel.Caption>
-              <h3>{objeto.nombre}</h3>
-              <p>{objeto.texto}</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        );
-      })}
-    </Carousel>
+    <div className="container-fluid vw-100 mx-0 px-0 vh-25">
+      <Carousel>
+        {imagenes.map((objeto) => {
+          return (
+            <Carousel.Item className="mh-25">
+              <LinkContainer to="/productos">
+                <img
+                  className="d-block w-100 "
+                  src={objeto}
+                  alt="First slide"
+                />
+              </LinkContainer>
+              <Carousel.Caption className="text-dark py-0">
+                <h3>imagen 1</h3>
+                <p className="mb-0">lorem ipsum</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
+    </div>
   );
 };
 
 export default CarouselImagenes;
+/* */
