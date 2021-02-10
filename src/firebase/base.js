@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/storage";
+import "firebase/firestore";
 
 export const app = firebase.initializeApp({
   projectId: "implementacion1",

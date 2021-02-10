@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import React from "react";
 
 import Categorias from "../Componentes/categoriasStickers";
 

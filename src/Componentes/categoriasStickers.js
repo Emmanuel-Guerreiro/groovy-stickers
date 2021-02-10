@@ -3,6 +3,9 @@ import { Card } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { app } from "../firebase/base";
 
+/*TODO: modificar todo el fetch de data para que lo haga a 
+cloud firestore y no a storage*/
+
 //import componentes
 import Loader from "./loader";
 
@@ -25,7 +28,7 @@ const Categorias = () => {
       if (buscar) {
         const storage = app.storage();
         const referenciaCarpeta = storage.refFromURL(
-          "gs://implementacion1.appspot.com/A/"
+          "gs://implementacion1.appspot.com/categorias"
         );
         referenciaCarpeta.listAll().then((imagenesObtenidas) => {
           imagenesObtenidas.items.forEach((imageRef) => {
@@ -39,7 +42,7 @@ const Categorias = () => {
         para que se llegue a cargar bien el array de imagenes*/
         setTimeout(() => {
           setLoading((prevState) => !prevState);
-        }, 2500);
+        }, 3000);
 
         setBuscar((prevState) => !prevState);
       }
@@ -48,7 +51,7 @@ const Categorias = () => {
       buscarImagenes();
     }
     console.log(imagenes.length);
-  }, [imagenes]);
+  }, [imagenes, buscar]);
 
   //aca terminaria lo que puedo sacar para hacer un hook
   let contenido;

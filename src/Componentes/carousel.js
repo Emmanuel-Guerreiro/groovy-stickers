@@ -3,7 +3,8 @@ import { Carousel } from "react-bootstrap";
 import { app } from "../firebase/base";
 import { LinkContainer } from "react-router-bootstrap";
 
-//TODO: agregar el spin de loading como esta hecho en categoriasStickers.js
+//importo componentes propios
+import Loader from "./loader";
 
 const CarouselImagenes = () => {
   const [imagenes, setImagenes] = useState([]);
@@ -23,7 +24,7 @@ const CarouselImagenes = () => {
       if (buscar) {
         const storage = app.storage();
         const referenciaCarpeta = storage.refFromURL(
-          "gs://implementacion1.appspot.com/A/"
+          "gs://implementacion1.appspot.com/categorias"
         );
         referenciaCarpeta.listAll().then((imagenesObtenidas) => {
           imagenesObtenidas.items.forEach((imageRef) => {
@@ -39,28 +40,31 @@ const CarouselImagenes = () => {
       }
     };
     buscarImagenes();
-  }, [imagenes]);
+  }, [imagenes, buscar]);
+
+  let contenido;
+  if (loading) {
+    contenido = <Loader />;
+  } else {
+    contenido = imagenes.map((objeto) => {
+      return (
+        <Carousel.Item className="mh-25">
+          <LinkContainer to="/productos">
+            <img className="d-block w-100 " src={objeto} alt="First slide" />
+          </LinkContainer>
+          <Carousel.Caption className="text-dark py-0">
+            <h3>imagen 1</h3>
+            <p className="mb-0">lorem ipsum</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      );
+    });
+  }
 
   return (
     <div className="container-fluid vw-100 mx-0 px-0 vh-25">
       <Carousel>
-        {imagenes.map((objeto) => {
-          return (
-            <Carousel.Item className="mh-25">
-              <LinkContainer to="/productos">
-                <img
-                  className="d-block w-100 "
-                  src={objeto}
-                  alt="First slide"
-                />
-              </LinkContainer>
-              <Carousel.Caption className="text-dark py-0">
-                <h3>imagen 1</h3>
-                <p className="mb-0">lorem ipsum</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          );
-        })}
+        <div style={{ height: "18rem" }}>{contenido}</div>
       </Carousel>
     </div>
   );

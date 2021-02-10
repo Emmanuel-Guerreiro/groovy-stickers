@@ -26,6 +26,8 @@ Optimizar tamaño imagenes y subirlas
 Sacar de donde corresponda para las distintas aplicaciones
 Armar la presentacion de una categoria especial
 Armar la presentacion (mas detalles) de un sticker
+Modificar de manera dinamica la posicion del footer en las distintas paginas
+con un estado en App que sea prop de footer y las distintas paginas donde haya que cargar cosas
 Armar "Como-comprar"
 Terminar Home page
 Terminar la funcionalidad del form en Contacto

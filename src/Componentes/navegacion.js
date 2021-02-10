@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Dropdown,
-  Button,
-  ButtonGroup,
-} from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 /*TODO: hacer que la lista de PRODUCTOS se genere sola. 
 Asi no quedan hardcodeadas las categorias. 
