@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 //TODO: Ver de implementar una validacion propia, o recurrir a Formik para llevarla a cabo
 //TODO: Ver como implementar MailJS para que se contacte drectamente con el mail de las chicas
 //TODO: Pasasr este componente a su propia carpeta con lo encargado de Formik y EmailJS
+//TODO: En la validacion tener en cuenta numero de telefono
 const FormularioContacto = () => {
   return (
     <Form>
@@ -18,6 +19,10 @@ const FormularioContacto = () => {
       <Form.Group>
         <Form.Label>Correo electronico</Form.Label>
         <Form.Control type="email" placeholder="Correo electronico" />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Número de telefono</Form.Label>
+        <Form.Control type="tel" placeholder="Número de telefono" />
       </Form.Group>
       <Form.Group
         controlId="exampleForm.ControlTextarea1"
@@ -35,7 +40,7 @@ const FormularioContacto = () => {
           contactarnos mas facil
         </Form.Text>
       </Form.Group>
-      <Button type="submit">Submit</Button>
+      <Button type="submit">Enviar</Button>
     </Form>
   );
 };

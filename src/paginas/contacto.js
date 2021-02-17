@@ -14,26 +14,33 @@ import BloqueRedes from "../ComponentesPlanos/bloqueRedes";
 
 const Contacto = () => {
   return (
-    <div className="container container-fluid containter-md my-md-5 p-3 border border-md-secondary shadow bg-white rounded">
+    <div
+      className="container container-fluid containter-md my-md-5
+     p-3 border border-md-secondary shadow bg-white rounded"
+    >
       <div className="row mx-0">
-        <div className="col col-md-6">
-          <div className="container m-0 my-3 p-4 border border-secondary rounded d-flex flex-column">
-            <h4 className="pb-2">Contacto</h4>
+        <section className="col col-md-6">
+          <div
+            className="container m-0 my-3 p-4 border 
+          border-secondary rounded d-flex flex-column"
+          >
+            <h3 className="pb-2">Contacto</h3>
+            <p>Si te interesa que nos pusieramos en contacto con vos</p>
             <div className="px-2">
               <FormularioContacto />
             </div>
           </div>
-        </div>
-        <div className="d-flex col col-md-4 mx-md-auto px-md-auto">
+        </section>
+        <section className="d-flex col col-md-4 mx-md-auto px-md-auto">
           <div className="container d-flex flex-column justify-content-center">
-            <div>
+            <span>
               <BloqueNumeros />
-            </div>
-            <div>
+            </span>
+            <span>
               <BloqueRedes />
-            </div>
+            </span>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
 import { app } from "../firebase/base";
 
 /*TODO: modificar todo el fetch de data para que lo haga a 
 cloud firestore y no a storage*/
+/*TODO: ver otra solucion a ese timeout de 3 segundos, para que si 
+lo usa alguien con mejor internet, no espere lo mismo */
 
 //import componentes
 import Loader from "./loader";
+import TarjetaCategoria from "./tarjetaCategoria/tarjetaCategoria";
 
 const Categorias = () => {
   //A partir de aca podria sacar para hacer un hook
@@ -54,31 +55,20 @@ const Categorias = () => {
   }, [imagenes, buscar]);
 
   //aca terminaria lo que puedo sacar para hacer un hook
-  let contenido;
+  let contenido = <Loader loading={loading} />;
   if (loading) {
     contenido = <Loader />;
   } else {
     contenido = imagenes.map((imagen) => {
-      return (
-        <div className="mx-auto" style={{ width: "18rem" }}>
-          <LinkContainer to="/">
-            <Card className="mx-0 my-3 p-0 border-rounded" as="button">
-              <Card.Img variant="top" src={imagen} />
-              <Card.Body className="w-100 p-0">
-                <Card.Text className="d-flex justify-content-center bg-dark text-light w-100">
-                  soy algo de texto
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </LinkContainer>
-        </div>
-      );
+      return <TarjetaCategoria imagen={imagen} />;
     });
   }
 
   return (
-    <div className=" container mx-auto vw-100">
-      <div className="d-flex flex-wrap w-100 mx-auto">{contenido}</div>
+    <div className={`d-flex container  vw-100 ${loading ? "my-5" : null}`}>
+      <div className="d-flex flex-wrap w-100 mx-auto my-2 px-auto">
+        {contenido}
+      </div>
     </div>
   );
 };
