@@ -1,7 +1,13 @@
 import React from "react";
 
+import StickerDetallado from "../Componentes/stickerDetallada";
+
 const PaginaPrueba = () => {
-  return <div>Soy la pagina de prueba de las categorias</div>;
+  return (
+    <div>
+      <StickerDetallado />
+    </div>
+  );
 };
 
 export default PaginaPrueba;

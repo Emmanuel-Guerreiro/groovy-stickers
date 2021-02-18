@@ -12,9 +12,8 @@ const ExplicacionCompra = () => {
         </section>
         <p className="mx-auto">
           <small>
-            Antes que nada, perdon por ser un proceso tan lento, te prometemos
-            que es temporal hasta que terminemos de desarrollar el carrito de
-            compras
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
+            minus
           </small>
         </p>
         <section>

@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 //TODO: ver si descompongo en menores componentes
+//TODO: Ver de componer lo que aparece en el hover
 
 /*Descripcion componente:
     Toma la imagen correspondiente de la "carpeta" de categorias en firebase
@@ -10,7 +11,7 @@ import { LinkContainer } from "react-router-bootstrap";
     Muestra el nombre y la descripcion de manera mas detallada en hover
     Al tocar en esta lleva a la lista de stickers de dicha categoria */
 
-const TarjetaCategoria = ({ imagen }) => {
+const TarjetaPreview = ({ imagen }) => {
   return (
     <div
       className="mx-auto shadow p-0 my-3 bg-white rounded"
@@ -22,7 +23,7 @@ const TarjetaCategoria = ({ imagen }) => {
           <Card.Body className="w-100 p-0 ">
             <Card.Text
               className="d-flex justify-content-center 
-            bg-dark text-light w-100 border-rounded"
+            bg-light text-dark w-100 border-rounded my-2"
             >
               soy algo de texto
             </Card.Text>
@@ -33,4 +34,4 @@ const TarjetaCategoria = ({ imagen }) => {
   );
 };
 
-export default TarjetaCategoria;
+export default TarjetaPreview;

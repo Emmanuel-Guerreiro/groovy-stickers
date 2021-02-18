@@ -28,40 +28,51 @@ Armar la presentacion de una categoria especial
 Armar la presentacion (mas detalles) de un sticker
 Modificar de manera dinamica la posicion del footer en las distintas paginas
 con un estado en App que sea prop de footer y las distintas paginas donde haya que cargar cosas
-Armar "Como-comprar"
+Terminar "Como-comprar"
 Terminar Home page
 Terminar la funcionalidad del form en Contacto
  */
 
 const App = () => {
   return (
-    <Router>
-      <Navegacion />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/contacto">
-          <Contacto />
-        </Route>
-        <Route exact path="/productos">
-          <Productos />
-        </Route>
-        <Route exact path="/como-comprar">
-          <ComoComprar />
-        </Route>
-        <Route exact path="/pagina-prueba">
-          <PaginaPrueba />
-        </Route>
-        <Route path="/pruebaN">
-          <PaginaPrueba />
-        </Route>
-        <Route path="/">
-          <NotFound />
-        </Route>
-      </Switch>
-      <PiePagina />
-    </Router>
+    <div
+      className="d-flex container flex-column mh-100 mw-100
+     m-0 p-0 vh-100 align-content-between"
+    >
+      <Router>
+        <header>
+          <Navegacion />
+        </header>
+        <main className="flex-fill">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/contacto">
+              <Contacto />
+            </Route>
+            <Route exact path="/productos">
+              <Productos />
+            </Route>
+            <Route exact path="/como-comprar">
+              <ComoComprar />
+            </Route>
+            <Route exact path="/pagina-prueba">
+              <PaginaPrueba />
+            </Route>
+            <Route path="/pruebaN">
+              <PaginaPrueba />
+            </Route>
+            <Route path="/">
+              <NotFound />
+            </Route>
+          </Switch>
+        </main>
+        <footer>
+          <PiePagina />
+        </footer>
+      </Router>
+    </div>
   );
 };
 

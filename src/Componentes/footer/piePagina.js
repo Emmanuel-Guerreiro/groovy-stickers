@@ -11,10 +11,11 @@ library.add(faTwitter, faInstagram);
 
 //TODO: ver si agrego una 3era columna diferenciando productos o solo voy por 2
 //y las acomodo en el flex
+//TODO: Descomponer en mas pequeños?
 
 const PiePagina = () => {
   return (
-    <div className="w-100 sticky-bottom text-light">
+    <div className="w-100 text-light">
       <div className="row m-0 bg-dark">
         <div className="col">
           <ColumnaUnoNav />
@@ -26,7 +27,7 @@ const PiePagina = () => {
       </div>
       <div className="row m-0 bg-secondary d-flex justify-content-between">
         <p className="m-2">
-          <small>Groovy Stickers derechos reservados</small>
+          <small>Groovy stickers</small>
         </p>
         <div className="d-flex flex-col text-light pt-2 ">
           <p className="px-2 mb-0">
