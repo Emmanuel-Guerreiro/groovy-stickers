@@ -15,8 +15,9 @@ import TarjetaPreview from "./tarjetaPreview";
 const Categorias = () => {
   const [loading, setLoading] = useState(true);
   const [buscar, setBuscar] = useState(true);
-  const imagenes = useBusquedaDatos(buscar, setBuscar);
+  // const imagenes = useBusquedaDatos("categorias");
 
+  console.log("emma");
   useEffect(() => {
     /*Este timeout busca atrasar el cambio de estado en el loading
         para que se llegue a cargar bien el array de imagenes*/

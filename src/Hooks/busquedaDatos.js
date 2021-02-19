@@ -5,8 +5,9 @@ import { app } from "../firebase/base";
 En principio, solo es capaz de traer imagenes, hay que corregirlo para que traiga
 a demas, toda la informacion de dicho sticker/categoria */
 
-const useBusquedaDatos = ({ buscar, setBuscar }) => {
+const useBusquedaDatos = (carpeta) => {
   const [imagenes, setImagenes] = useState([]);
+  const [buscar, setBuscar] = useState(true);
 
   var arrayAyuda = [];
 
@@ -20,7 +21,7 @@ const useBusquedaDatos = ({ buscar, setBuscar }) => {
     if (buscar) {
       const storage = app.storage();
       const referenciaCarpeta = storage.refFromURL(
-        "gs://implementacion1.appspot.com/categorias"
+        `gs://implementacion1.appspot.com/${carpeta}`
       );
       referenciaCarpeta.listAll().then((imagenesObtenidas) => {
         imagenesObtenidas.items.forEach((imageRef) => {
@@ -37,11 +38,7 @@ const useBusquedaDatos = ({ buscar, setBuscar }) => {
   useEffect(() => {
     buscarImagenes();
     console.log(imagenes.length);
-  }, [imagenes, buscar]);
-
-  let objetoRetorno = {
-    imagenes: imagenes,
-  };
+  }, [buscar]);
 
   return imagenes;
 };

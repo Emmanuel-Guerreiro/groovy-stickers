@@ -2,8 +2,8 @@ import React from "react";
 
 //Importo componentes
 import FormularioContacto from "../Componentes/formContacto";
-import BloqueNumeros from "../ComponentesPlanos/bloqueNumeros";
-import BloqueRedes from "../ComponentesPlanos/bloqueRedes";
+import BloqueNumeros from "../Componentes/ComponentesPlanos/bloqueNumeros";
+import BloqueRedes from "../Componentes/ComponentesPlanos/bloqueRedes";
 
 //TODO: ver de agregar algun sticker junto con los estilos y ponerlo primero en movil, para que sea mas amigable
 //TODO: ponerle un titulo al formulario
