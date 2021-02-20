@@ -15,16 +15,15 @@ import TarjetaPreview from "./tarjetaPreview";
 const Categorias = () => {
   const [loading, setLoading] = useState(true);
   const [buscar, setBuscar] = useState(true);
-  // const imagenes = useBusquedaDatos("categorias");
+  const imagenes = useBusquedaDatos("categorias");
 
-  console.log("emma");
   useEffect(() => {
     /*Este timeout busca atrasar el cambio de estado en el loading
         para que se llegue a cargar bien el array de imagenes*/
     setTimeout(() => {
       setLoading((prevState) => !prevState);
     }, 3000);
-  });
+  }, []);
 
   let contenido;
   if (loading) {
