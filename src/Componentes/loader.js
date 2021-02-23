@@ -11,15 +11,14 @@ var frases = [
   "Actividades secretas",
 ];
 
-const Loader = ({ loading }) => {
+const Loader = () => {
   const [textoAnimado, setTextoAnimado] = useState();
-  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * 10);
     const index = random % frases.length;
     setTimeout(setTextoAnimado(frases[index]), 700);
-  });
+  }, []);
 
   return (
     <div

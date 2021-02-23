@@ -1,24 +1,51 @@
-var firebase = require("firebase/app");
-require("firebase/storage");
-require("firebase/firestore");
+import { app } from "../../../firebase/base";
 
-const app = firebase.initializeApp({
-  projectId: "implementacion1",
-  appId: "1:162537327702:web:be673fafbb73d0dbcafff7",
-  storageBucket: "implementacion1.appspot.com",
-  locationId: "southamerica-east1",
-  apiKey: "AIzaSyCc8BXgyMHKyiJNzKXnSNORfJ4-RN5RFDE",
-  authDomain: "implementacion1.firebaseapp.com",
-  messagingSenderId: "162537327702",
-});
+/*const obtencionMetadata = () => {
+  var arrayAyuda = [];
+  const storage = app.storage().ref();
+  const imagenRef = storage.child("categorias");
+  const db = app.firestore();
 
-const storage = app.storage().ref();
-const imagenRef = storage.child("A");
-
-imagenRef.listAll().then((imagenes) => {
-  imagenes.items.forEach((imagen) => {
-    imagen.getMetadata().then((metadata) => {
-      console.log(metadata);
+  imagenRef.listAll().then((imagenes) => {
+    imagenes.items.forEach((imagen) => {
+      imagen.getMetadata().then((metadata) => {
+        const nombre = metadata.name;
+        const nombreAdaptado = nombre.substring(0, nombre.length - 4);
+        const categoria = nombre.substring(0, 1);
+        let data = {
+          nombre: nombreAdaptado,
+          categoria: categoria,
+          link: `gs://implementacion1.appspot.com/${metadata.fullPath}`,
+          timeCreated: metadata.timeCreated,
+          carousell: false,
+          promocion: "no",
+          home: "no",
+        };
+        db.collection("categorias")
+          .add(data)
+          .then(() => {
+            console.log(`agregado ${nombre}`);
+          });
+      });
     });
   });
-});
+  console.log(arrayAyuda);
+  return arrayAyuda;
+};
+
+const cargaCloudFirestore = async () => {
+  const datos = obtencionMetadata();
+  const db = app.firestore();
+  var batch = db.batch();
+  console.log("Por empezar");
+  datos.forEach((datos) => {
+    var datosRef = db.collection(datos.categoria);
+    batch.add(datosRef, datos);
+    batch.commit().then(() => {
+      console.log("TERMINE LA CARGA");
+    });
+  });
+  await console.log("termine");
+};
+
+export default obtencionMetadata;*/

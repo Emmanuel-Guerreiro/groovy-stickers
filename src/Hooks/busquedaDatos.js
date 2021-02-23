@@ -17,7 +17,7 @@ const useBusquedaDatos = (carpeta) => {
     setImagenes(arrayAyuda);
   };
 
-  const buscarImagenes = async () => {
+  const buscarImagenes = () => {
     if (buscar) {
       const storage = app.storage();
       const referenciaCarpeta = storage.refFromURL(

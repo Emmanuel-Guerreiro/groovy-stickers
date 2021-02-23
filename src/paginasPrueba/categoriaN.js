@@ -1,26 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import StickerDetallado from "../Componentes/detallesSticker/stickerDetallada";
-import ImagenGrande from "../Componentes/detallesSticker/imagenGrande";
-
+import obtencionMetadata from "../cargarFirebase/cargarDatosFirebase/storage/getMetadata";
+import useFetchData from "../Hooks/hookFetchData";
 //TODO: ver que cuando haga click en la imagen del sticker la muestre bien grande
 
 const PaginaPrueba = () => {
-  const [imagenAbierta, setImagenAbierta] = useState(false);
-
-  let imagen;
-  if (imagenAbierta) {
-    imagen = <ImagenGrande />;
-  }
-
+  /*Este estado de imagen es temporal, y el de nombre, es mejor 
+  usarlo con el hook de busqueda y dejarlo en una constante*/
+  const [imagen, setImagen] = useState("http://placekitten.com/g/450/450");
+  const [imagenAlt, setImagenAlt] = useState("Soy el alt");
+  const [nombre, setNombre] = useState("NombreSticker");
+  const img = useFetchData("categorias");
+  useEffect(() => {}, []);
   return (
-    <div id="Container mayor" className="container-fluid">
-      <div style={{ zIndex: 0 }} className="container-fluid">
-        <StickerDetallado setImagenAbierta={setImagenAbierta} />
-      </div>
-      <div style={{ zIndex: 100 }} className="container-fluid h-100 w-100">
-        {imagen}
-      </div>
+    <div className="container">
+      <StickerDetallado imagen={imagen} imagenAlt={imagenAlt} nombre={nombre} />
     </div>
   );
 };

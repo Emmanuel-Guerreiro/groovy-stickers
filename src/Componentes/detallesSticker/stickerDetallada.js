@@ -1,43 +1,54 @@
 import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 
 import BotonesTamano from "./botonesTamano";
+import ImagenModal from "./imagenModal";
+import Codigo from "./codigoSticker";
 
-const StickerDetallado = ({ setImagenAbierta }) => {
+//TODO: Ver de dar tamaño responsivo imagen
+//TODO: El boton de agregar al carrito tiene que manejar el estado
+//global para que se agregue a la lista. Por ahora es useless
+//TODO: Agregar la opcion de tamaño detallado de sticker y ver como manejarlo
+
+const StickerDetallado = ({ imagen, imagenAlt, nombre }) => {
   const [tamano, setTamano] = useState("M");
 
-  const handleClick = () => {
-    setImagenAbierta((prevState) => !prevState);
-  };
+  //Este estado, y esas dos funciones corresponden a la imagen Modal
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   return (
-    <div className="container container-fluid ">
-      <div
-        className="d-flex flex-row shadow-lg
+    <div
+      className="d-flex flex-row shadow-lg
      p-3 mb-5 bg-white rounded my-md-5"
-      >
-        <section className="mx-1">
-          <img
-            className="rounded m-2"
-            src="http://placekitten.com/g/450/450"
-            style={{ cursor: "pointer" }}
-            onClick={handleClick}
-          />
-        </section>
-        <div className="d-flex flex-column flex-wrap mx-5">
-          <div className="my-auto">
-            <h3>Nombre Sticker</h3>
-            <p>Lorem ipsum dolor sit amet consectetur</p>
-          </div>
-          <div className="my-auto">
-            <h6>asd</h6>
-            <BotonesTamano tamano={tamano} setTamano={setTamano} />
-            <div className="d-flex flex-row mt-2">
-              <p>Codigo sticker: </p>
-              <p className="ml-1">#12345</p>
-            </div>
-          </div>
+    >
+      <section className="mx-1">
+        <img
+          className="rounded m-2"
+          src={imagen}
+          alt={imagenAlt}
+          style={{ cursor: "pointer", height: "30rem", width: "30rem" }}
+          onClick={handleShow}
+        />
+        <Modal show={show} onHide={handleClose}>
+          <ImagenModal imagen={imagen} alt={imagenAlt} />
+        </Modal>
+      </section>
+      <section className="d-flex flex-column flex-wrap mx-5">
+        <div className="my-auto">
+          <h3>{nombre}</h3>
+          <p>Lorem ipsum dolor sit amet consectetur</p>
         </div>
-      </div>
+        <div className="mt-auto">
+          <h6>asd</h6>
+          <BotonesTamano tamano={tamano} setTamano={setTamano} />
+          <Codigo tamano={tamano} nombre={nombre} />
+        </div>
+        <div className="mt-auto pb-2 ">
+          <button className="btn btn-primary">Comprar</button>
+        </div>
+      </section>
     </div>
   );
 };

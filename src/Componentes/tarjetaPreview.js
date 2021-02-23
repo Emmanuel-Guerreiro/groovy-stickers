@@ -11,6 +11,13 @@ import { LinkContainer } from "react-router-bootstrap";
     Muestra el nombre y la descripcion de manera mas detallada en hover
     Al tocar en esta lleva a la lista de stickers de dicha categoria */
 
+/*Del nombre de la imagen que llega, (ya sea categoria o nombre de 
+  sticker), tiene que generar un estado, tal que, al clickearlo,
+  se pueda trabajar con el routing
+  Por ejemplo: Si le llega de nombre, dentor de los datos de la imagen,
+  A (categoria A) => tiene que, en el onClick, setear un estado hacia 
+  arriba, que permita ir a categorias/A  */
+
 const TarjetaPreview = ({ imagen }) => {
   return (
     <div
