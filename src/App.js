@@ -20,13 +20,19 @@ import PaginaPrueba from "./paginasPrueba/categoriaN";
 //TODO: Agrandar foto del icono en la barra de pestañas
 
 /*COMENTARIO de ESTADO:
+Editar Bootstrap para poner colores personalizados
+Ver de mejorar la barra de navegacion
+Como lograr la paginacion de los stickers
+Ver como construir la pagina que muestra los stickers, para que tambien
+muestre las otras categorias posibles, al estilo de la doc de bootstrap
 Logrado conseguir las imagenes de una "carpeta" de storage. 
 Necesito formatear bien las presentaciones
 Optimizar tamaño imagenes y subirlas
 Sacar de donde corresponda para las distintas aplicaciones
 Armar la presentacion de una categoria especial
 Terminar Home page
-Terminar la funcionalidad del form en Contacto
+Ya validado, implementar emailjs
+
  */
 
 const App = () => {

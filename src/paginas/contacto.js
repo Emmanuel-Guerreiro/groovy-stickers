@@ -25,7 +25,11 @@ const Contacto = () => {
           border-secondary rounded d-flex flex-column"
           >
             <h3 className="pb-2">Contacto</h3>
-            <p>Si te interesa que nos pusieramos en contacto con vos</p>
+            <p className="text-muted">
+              <small>
+                Si te interesa que nos pusieramos en contacto con vos
+              </small>
+            </p>
             <div className="px-2">
               <FormularioContacto />
             </div>
@@ -33,12 +37,15 @@ const Contacto = () => {
         </section>
         <section className="d-flex col col-md-4 mx-md-auto px-md-auto">
           <div className="container d-flex flex-column justify-content-center">
-            <span>
-              <BloqueNumeros />
-            </span>
-            <span>
-              <BloqueRedes />
-            </span>
+            <div
+              style={{
+                height: "10rem",
+                width: "10rem",
+                backgroundColor: "	#ffdb7b",
+              }}
+            ></div>
+            <BloqueNumeros />
+            <BloqueRedes />
           </div>
         </section>
       </div>

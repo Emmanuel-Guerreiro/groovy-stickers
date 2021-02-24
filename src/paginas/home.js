@@ -14,7 +14,7 @@ const Home = () => {
       <section>
         <NuestrosProductos />
       </section>
-      <section>
+      <section className="container-fluid m-0 mt-3 p-0">
         <Personalizado />
       </section>
       <section>
