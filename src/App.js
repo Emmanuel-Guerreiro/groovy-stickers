@@ -25,14 +25,12 @@ Ver de mejorar la barra de navegacion
 Como lograr la paginacion de los stickers
 Ver como construir la pagina que muestra los stickers, para que tambien
 muestre las otras categorias posibles, al estilo de la doc de bootstrap
-Logrado conseguir las imagenes de una "carpeta" de storage. 
 Necesito formatear bien las presentaciones
 Optimizar tamaño imagenes y subirlas
 Sacar de donde corresponda para las distintas aplicaciones
 Armar la presentacion de una categoria especial
 Terminar Home page
-Ya validado, implementar emailjs
-
+Terminar pagina Not found
  */
 
 const App = () => {

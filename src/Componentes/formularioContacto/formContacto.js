@@ -2,31 +2,32 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Form as FormB } from "react-bootstrap";
 import * as yup from "yup";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
-//TODO: Ver de implementar una validacion propia, o recurrir a Formik para llevarla a cabo
-//TODO: Ver como implementar MailJS para que se contacte drectamente con el mail de las chicas
-//TODO: Pasasr este componente a su propia carpeta con lo encargado de Formik y EmailJS
+//TODO: ver de reformular este archivo, es un tagliattelle
 
-//TODO: usar as={} para psarle a los componentes, los forms components de react-bootstrap
-const FormularioContacto = () => {
+const FormularioContacto = ({ setShow }) => {
   const regexNombre = /^[a-zA-Z]+$/;
   const regexEmail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,5})$/;
   const regexNumero = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
   const regexTexto = /^[a-zA-Z0-9\d\s]*$/;
+
+  const handleShow = () => {
+    setShow(true);
+  };
 
   const initValForm = {
     nombre: "",
     apellido: "",
     email: "",
     telefono: "",
-    texto: ""
-  }
+    texto: "",
+  };
   const emailDatos = {
     service_id: "service_vvjm3hf",
     template_id: "template_me3vjp9",
-    user_id: "user_UXQSCaOKwnjj3yW9yE39G"
-  }
+    user_id: "user_UXQSCaOKwnjj3yW9yE39G",
+  };
 
   const yupValid = yup.object().shape({
     nombre: yup
@@ -37,7 +38,10 @@ const FormularioContacto = () => {
       .required("Es necesario que nos dejes tu nombre!"),
     apellido: yup
       .string()
-      .matches(regexNombre, "Eso no parece un apellido")
+      .matches(
+        regexNombre,
+        "E//TODO: usar as={} para psarle a los componentes, los forms components de react-bootstrapso no parece un apellido"
+      )
       .min(2, "Muy corto! El minimo es 2 digitos")
       .max(15, "Muy largo! El maximo es 15 digitos")
       .required("Es necesario que nos dejes tu apellido!"),
@@ -67,9 +71,21 @@ const FormularioContacto = () => {
         }}
         validationSchema={yupValid}
         onSubmit={(values, actions) => {
-          emailjs.send(emailDatos.service_id, emailDatos.template_id, values, emailDatos.user_id).then((response) => {console.log(response)}).catch(err => {console.log(err)})
-          actions.setSubmitting(false)
-          actions.resetForm({values: initValForm})
+          emailjs
+            .send(
+              emailDatos.service_id,
+              emailDatos.template_id,
+              values,
+              emailDatos.user_id
+            )
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          actions.setSubmitting(false);
+          actions.resetForm({ values: initValForm });
         }}
       >
         {(props) => (
@@ -141,7 +157,12 @@ const FormularioContacto = () => {
                 <ErrorMessage name="texto" />
               </small>
             </FormB.Group>
-            <button type="submit" className="btn btn-primary" disabled={props.isSubmitting}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={props.isSubmitting}
+              onClick={handleShow}
+            >
               Enviar
             </button>
           </Form>
