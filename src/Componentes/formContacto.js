@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Form as FormB } from "react-bootstrap";
 import * as yup from "yup";
+import emailjs from 'emailjs-com';
 
 //TODO: Ver de implementar una validacion propia, o recurrir a Formik para llevarla a cabo
 //TODO: Ver como implementar MailJS para que se contacte drectamente con el mail de las chicas
@@ -13,6 +14,19 @@ const FormularioContacto = () => {
   const regexEmail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,5})$/;
   const regexNumero = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
   const regexTexto = /^[a-zA-Z0-9\d\s]*$/;
+
+  const initValForm = {
+    nombre: "",
+    apellido: "",
+    email: "",
+    telefono: "",
+    texto: ""
+  }
+  const emailDatos = {
+    service_id: "service_vvjm3hf",
+    template_id: "template_me3vjp9",
+    user_id: "user_UXQSCaOKwnjj3yW9yE39G"
+  }
 
   const yupValid = yup.object().shape({
     nombre: yup
@@ -53,7 +67,9 @@ const FormularioContacto = () => {
         }}
         validationSchema={yupValid}
         onSubmit={(values, actions) => {
-          alert(JSON.stringify(values, null, 2));
+          emailjs.send(emailDatos.service_id, emailDatos.template_id, values, emailDatos.user_id).then((response) => {console.log(response)}).catch(err => {console.log(err)})
+          actions.setSubmitting(false)
+          actions.resetForm({values: initValForm})
         }}
       >
         {(props) => (
@@ -125,7 +141,7 @@ const FormularioContacto = () => {
                 <ErrorMessage name="texto" />
               </small>
             </FormB.Group>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary" disabled={props.isSubmitting}>
               Enviar
             </button>
           </Form>
