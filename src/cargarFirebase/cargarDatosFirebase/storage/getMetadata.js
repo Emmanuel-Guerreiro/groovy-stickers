@@ -1,6 +1,6 @@
 import { app } from "../../../firebase/base";
 
-/*const obtencionMetadata = () => {
+const obtencionMetadata = () => {
   var arrayAyuda = [];
   const storage = app.storage().ref();
   const imagenRef = storage.child("categorias");
@@ -20,6 +20,7 @@ import { app } from "../../../firebase/base";
           carousell: false,
           promocion: "no",
           home: "no",
+          tipo: "categoria",
         };
         db.collection("categorias")
           .add(data)
@@ -41,11 +42,10 @@ const cargaCloudFirestore = async () => {
   datos.forEach((datos) => {
     var datosRef = db.collection(datos.categoria);
     batch.add(datosRef, datos);
-    batch.commit().then(() => {
-      console.log("TERMINE LA CARGA");
-    });
   });
-  await console.log("termine");
+  batch.commit().then(() => {
+    console.log("TERMINE LA CARGA");
+  });
 };
 
-export default obtencionMetadata;*/
+export default cargaCloudFirestore;

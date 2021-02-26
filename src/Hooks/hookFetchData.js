@@ -12,21 +12,21 @@ se la pase haciendo querys y sature la capacidad gratis, hacer pruebas
 para ver si es indispensable 
 */
 
-const useFetchData = ({ coleccion }) => {
+const useFetchData = () => {
   const [buscar, setBuscar] = useState(true);
-  var db = app.firestore();
-  var docRef = db.collection(coleccion);
-  let arrayAyuda = [];
-  useEffect(() => {
-    if (buscar) {
-      docRef.get().then((datosImg) => {
-        console.log(datosImg);
-        arrayAyuda.push(datosImg);
-      });
-      setBuscar(false);
-    }
-  }, []);
-  return arrayAyuda;
+  const db = app.firestore();
+
+  if (buscar) {
+    db.collection("categorias")
+      .where("tipo", "==", "categoria")
+      .get()
+      .then((res) => res.forEach((doc) => console.log(doc.data())))
+      .catch((err) => console.log(err));
+
+    setBuscar(false);
+  }
+
+  //return arrayAyuda;
 };
 
 export default useFetchData;

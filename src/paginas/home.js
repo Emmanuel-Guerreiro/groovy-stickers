@@ -4,8 +4,11 @@ import CarouselImagenes from "../Componentes/carousel";
 import NuestrosProductos from "../Componentes/nuestrosProductos";
 import Personalizado from "../Componentes/personalizado";
 import Promociones from "../Componentes/promociones";
+import useFetchData from "../Hooks/hookFetchData";
 
 const Home = () => {
+  //const datos = useFetchData("categorias");
+
   return (
     <div className="container-fluid p-0">
       <section>
