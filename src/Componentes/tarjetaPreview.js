@@ -18,7 +18,7 @@ import { LinkContainer } from "react-router-bootstrap";
   A (categoria A) => tiene que, en el onClick, setear un estado hacia 
   arriba, que permita ir a categorias/A  */
 
-const TarjetaPreview = ({ imagen }) => {
+const TarjetaPreview = ({ objeto }) => {
   return (
     <div
       className="mx-auto shadow p-0 my-3 bg-white rounded"
@@ -26,13 +26,13 @@ const TarjetaPreview = ({ imagen }) => {
     >
       <LinkContainer to="/">
         <Card className="mx-0 p-0 border-rounded" as="button">
-          <Card.Img variant="top" src={imagen} />
+          <Card.Img variant="top" src={objeto.imagen} alt={objeto.nombre} />
           <Card.Body className="w-100 p-0 ">
             <Card.Text
               className="d-flex justify-content-center 
             bg-light text-dark w-100 border-rounded my-2"
             >
-              soy algo de texto
+              {objeto.nombre}
             </Card.Text>
           </Card.Body>
         </Card>

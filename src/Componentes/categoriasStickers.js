@@ -7,6 +7,7 @@ lo usa alguien con mejor internet, no espere lo mismo */
 
 //importo hooks
 import useBusquedaDatos from "../Hooks/busquedaDatos";
+import useFetchData from "../Hooks/hookFetchData";
 
 //import componentes
 import Loader from "./loader";
@@ -14,25 +15,18 @@ import TarjetaPreview from "./tarjetaPreview";
 
 const Categorias = () => {
   const [loading, setLoading] = useState(true);
-  const [buscar, setBuscar] = useState(true);
-  const imagenes = useBusquedaDatos("categorias");
-
-  useEffect(() => {
-    /*Este timeout busca atrasar el cambio de estado en el loading
-        para que se llegue a cargar bien el array de imagenes*/
-    setTimeout(() => {
-      setLoading((prevState) => !prevState);
-    }, 3000);
-  }, []);
+  var imagenes = [];
+  imagenes = useFetchData({ setLoading });
 
   let contenido;
   if (loading) {
     contenido = <Loader loading={loading} />;
   } else {
-    contenido = imagenes.map((imagen) => {
-      return <TarjetaPreview imagen={imagen} />;
+    contenido = imagenes.map((objeto) => {
+      return <TarjetaPreview objeto={objeto} />;
     });
   }
+
   return (
     <div className={`d-flex container wrap px-0 ${loading ? "my-5" : null}`}>
       <div className="d-flex flex-wrap justify-content-center sw-100 mx-auto my-2 px-auto">
