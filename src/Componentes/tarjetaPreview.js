@@ -19,6 +19,7 @@ import { LinkContainer } from "react-router-bootstrap";
   arriba, que permita ir a categorias/A  */
 
 const TarjetaPreview = ({ objeto }) => {
+  console.log(objeto.link);
   return (
     <div
       className="mx-auto shadow p-0 my-3 bg-white rounded"
@@ -26,7 +27,7 @@ const TarjetaPreview = ({ objeto }) => {
     >
       <LinkContainer to="/">
         <Card className="mx-0 p-0 border-rounded" as="button">
-          <Card.Img variant="top" src={objeto.imagen} alt={objeto.nombre} />
+          <Card.Img variant="top" src={objeto.link} alt={objeto.nombre} />
           <Card.Body className="w-100 p-0 ">
             <Card.Text
               className="d-flex justify-content-center 

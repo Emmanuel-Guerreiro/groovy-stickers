@@ -16,8 +16,13 @@ import TarjetaPreview from "./tarjetaPreview";
 const Categorias = () => {
   const [loading, setLoading] = useState(true);
   var imagenes = [];
-  imagenes = useFetchData({ setLoading });
+  imagenes = useFetchData();
+  console.log(imagenes.length);
+  console.log(imagenes);
 
+  useEffect(() => {
+    setTimeout(setLoading(false), 3000);
+  }, []);
   let contenido;
   if (loading) {
     contenido = <Loader loading={loading} />;
