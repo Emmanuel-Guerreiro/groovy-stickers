@@ -23,11 +23,10 @@ const useFetchData = () => {
       .then((res) =>
         res.forEach((doc) => {
           arrayAyuda.push(doc.data());
+          setImagenes([...arrayAyuda]);
         })
       )
       .catch((err) => console.log(err));
-
-    setImagenes(arrayAyuda);
   }, []);
 
   return imagenes;

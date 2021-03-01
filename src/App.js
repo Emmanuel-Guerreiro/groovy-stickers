@@ -20,6 +20,8 @@ import PaginaPrueba from "./paginasPrueba/categoriaN";
 //TODO: Agrandar foto del icono en la barra de pestañas
 
 /*COMENTARIO de ESTADO:
+Arreglar la carga a firebase database para que esten los links, no las
+ referencias a las imagenes
 Editar Bootstrap para poner colores personalizados
 Ver de mejorar la barra de navegacion
 Como lograr la paginacion de los stickers
