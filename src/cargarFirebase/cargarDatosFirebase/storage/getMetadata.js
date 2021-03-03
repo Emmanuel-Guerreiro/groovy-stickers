@@ -1,6 +1,6 @@
 import { app } from "../../../firebase/base";
 
-const obtencionMetadata = () => {
+const obtencionMetadata = async () => {
   var arrayAyuda = [];
   const storage = app.storage().ref();
   const imagenRef = storage.child("categorias");
@@ -12,7 +12,8 @@ const obtencionMetadata = () => {
         const nombre = metadata.name;
         const nombreAdaptado = nombre.substring(0, nombre.length - 4);
         const categoria = nombre.substring(0, 1);
-        let data = {
+
+        const data = {
           nombre: nombreAdaptado,
           categoria: categoria,
           link: `gs://implementacion1.appspot.com/${metadata.fullPath}`,
@@ -22,10 +23,11 @@ const obtencionMetadata = () => {
           home: "no",
           tipo: "categoria",
         };
+
         db.collection("categorias")
           .add(data)
           .then(() => {
-            console.log(`agregado ${nombre}`);
+            console.log(`agregado`);
           });
       });
     });
@@ -35,7 +37,7 @@ const obtencionMetadata = () => {
 };
 
 const cargaCloudFirestore = async () => {
-  const datos = obtencionMetadata();
+  const datos = await obtencionMetadata();
   const db = app.firestore();
   var batch = db.batch();
   console.log("Por empezar");
