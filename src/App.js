@@ -16,6 +16,7 @@ import PiePagina from "./Componentes/footer/piePagina";
 
 //importo pagina de pruebas
 import PaginaPrueba from "./paginasPrueba/categoriaN";
+import StickerInd from "./paginas/stickerInd";
 
 //TODO: una vez listo el tema de las paginas de prueba borrar el import y el camino hacia estas
 //TODO: Agrandar foto del icono en la barra de pestañas
@@ -68,6 +69,9 @@ const App = () => {
             </Route>
             <Route path="/stickers">
               <Stickers />
+            </Route>
+            <Route path={["/productos/sticker/:categoria/:nombre"]}>
+              <StickerInd />
             </Route>
             <Route path={["/productos/:categoria", "/stickers/:categoria"]}>
               <Stickers />

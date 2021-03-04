@@ -5,6 +5,8 @@ import { app } from "../firebase/base";
 En principio, solo es capaz de traer imagenes, hay que corregirlo para que traiga
 a demas, toda la informacion de dicho sticker/categoria */
 
+//!!ESTE HOOK ESTA DEPRECATED. VER DE NO CAGARLA CUANDO LO BORRO
+
 const useBusquedaDatos = (carpeta) => {
   const [imagenes, setImagenes] = useState([]);
   const [buscar, setBuscar] = useState(true);

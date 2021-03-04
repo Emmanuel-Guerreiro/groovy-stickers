@@ -5,6 +5,7 @@ import ConjuntoStickers from "../Componentes/conjuntoStickers";
 
 import useFetchData from "../Hooks/hookFetchData";
 import { app } from "./../firebase/base";
+import ListaCat from "../Componentes/listaCategorias";
 
 //TODO: Esto no es una pagina, hay que ver de acomodarlo para poner la lista de cat
 //TODO: ver de reformarlo, esta desprolijo
@@ -72,10 +73,22 @@ const Stickers = () => {
         tamanoImg="12rem"
         imagenes={imagenes}
         tamanoCont="sw-100"
+        margenX="mx-5 "
+        preLink={`/productos/sticker/${categoria}`}
       />
     );
 
-  return <>{contenido}</>;
+  return (
+    <div className="d-flex bd-highlight ">
+      <div
+        className="d-flex container mr-2 border-right shadow "
+        style={{ backgroundColor: "#fff" }}
+      >
+        <ListaCat />
+      </div>
+      {contenido}
+    </div>
+  );
 };
 
 export default Stickers;

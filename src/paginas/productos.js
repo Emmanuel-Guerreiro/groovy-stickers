@@ -29,10 +29,12 @@ const Productos = () => {
         tamanoImg="18rem"
         imagenes={imagenes}
         tamanoCont="sw-100"
+        margenX="mx-auto"
+        preLink="/productos"
       />
     );
 
-  return <>{contenido}</>;
+  return <div className={`d-flex container wrap px-0 `}>{contenido}</div>;
 };
 
 export default Productos;

@@ -17,22 +17,27 @@ tamanoCont: El tamaño relativo respecto al container mayor
 tamanoImg: Es el tamaño en rem de la TarjetaPreview
 imagenes: Es el conjunto de imagenes que el componente padre ya busco*/
 
-const ConjuntoStickers = ({ tamanoCont, tamanoImg, imagenes }) => {
+const ConjuntoStickers = ({
+  tamanoCont,
+  tamanoImg,
+  imagenes,
+  margenX,
+  preLink,
+}) => {
   return (
-    <div className={`d-flex container wrap px-0 `}>
-      <div
-        className={`d-flex flex-wrap justify-content-center ${tamanoCont} mx-auto my-2 px-auto`}
-      >
-        {imagenes.map((objeto) => {
-          return (
-            <TarjetaPreview
-              objeto={objeto}
-              key={objeto.nombre}
-              tamano={tamanoImg}
-            />
-          );
-        })}
-      </div>
+    <div
+      className={`d-flex flex-wrap justify-content-center ${tamanoCont} ${margenX} my-5 px-auto`}
+    >
+      {imagenes.map((objeto) => {
+        return (
+          <TarjetaPreview
+            objeto={objeto}
+            key={objeto.nombre}
+            tamano={tamanoImg}
+            preLink={preLink}
+          />
+        );
+      })}
     </div>
   );
 };
