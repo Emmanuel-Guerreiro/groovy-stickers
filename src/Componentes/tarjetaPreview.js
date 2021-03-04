@@ -19,7 +19,7 @@ import { app } from "../firebase/base";
   A (categoria A) => tiene que, en el onClick, setear un estado hacia 
   arriba, que permita ir a categorias/A  */
 
-const TarjetaPreview = ({ objeto }) => {
+const TarjetaPreview = ({ objeto, tamano }) => {
   const [link, setLink] = useState();
   useEffect(() => {
     const storage = app.storage();
@@ -30,7 +30,7 @@ const TarjetaPreview = ({ objeto }) => {
   return (
     <div
       className="mx-auto shadow p-0 my-3 bg-white rounded"
-      style={{ width: "18rem" }}
+      style={{ width: tamano }}
     >
       <LinkContainer to={`/productos/${objeto.nombre}`}>
         <Card className="mx-0 p-0 border-rounded" as="button">

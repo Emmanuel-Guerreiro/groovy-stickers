@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 
+//!Este comp seguro tome mas sentido con los lazy
 /*TODO: ver de corregir de alguna mejor forma esto. Una solucion puede
 ser usar un context con el loading y pasarlo al sticky del footer*/
 //TODO: agregar otro loading en lugar del spinner triste ese

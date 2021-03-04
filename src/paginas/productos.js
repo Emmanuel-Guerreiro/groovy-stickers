@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import Categorias from "../Componentes/categoriasStickers";
+import ConjuntoStickers from "../Componentes/conjuntoStickers";
+import Loader from "../Componentes/loader";
+import useFetchData from "../Hooks/hookFetchData";
 
-//Esta pagina muestra las categorias de los stickers y de ahi te lleva a mostrar todos los stickers de una categoria
-//Probablemente pueda usar la misma idea que en carousel y sacarlo en comun (intentar hacer un hook)
+/*Descripcion:
+Esta es la pagina a la que se llega a traves de /productos y se encarga de 
+mostrar las categorias disponibles de stickers.
+Hace el fetch a la coleccion de categorias y despues pasa los parametros al 
+componente ConjuntoStickers */
 
 const Productos = () => {
-  return (
-    <div>
-      <Categorias />
-    </div>
-  );
+  const [loading, setLoading] = useState(true);
+
+  var imagenes = [];
+
+  imagenes = useFetchData("categorias");
+
+  useEffect(() => {
+    setTimeout(setLoading(false), 3000);
+  }, []);
+
+  var contenido =
+    loading === true ? (
+      <Loader />
+    ) : (
+      <ConjuntoStickers
+        tamanoImg="18rem"
+        imagenes={imagenes}
+        tamanoCont="sw-100"
+      />
+    );
+
+  return <>{contenido}</>;
 };
 
 export default Productos;
