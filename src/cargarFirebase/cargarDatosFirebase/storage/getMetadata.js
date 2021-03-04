@@ -3,7 +3,7 @@ import { app } from "../../../firebase/base";
 const obtencionMetadata = async () => {
   var arrayAyuda = [];
   const storage = app.storage().ref();
-  const imagenRef = storage.child("categorias");
+  const imagenRef = storage.child("B");
   const db = app.firestore();
 
   imagenRef.listAll().then((imagenes) => {
@@ -21,10 +21,10 @@ const obtencionMetadata = async () => {
           carousell: false,
           promocion: "no",
           home: "no",
-          tipo: "categoria",
+          tipo: "sticker",
         };
 
-        db.collection("categorias")
+        db.collection("B")
           .add(data)
           .then(() => {
             console.log(`agregado`);

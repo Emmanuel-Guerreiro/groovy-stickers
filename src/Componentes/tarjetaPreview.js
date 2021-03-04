@@ -32,7 +32,7 @@ const TarjetaPreview = ({ objeto }) => {
       className="mx-auto shadow p-0 my-3 bg-white rounded"
       style={{ width: "18rem" }}
     >
-      <LinkContainer to="/">
+      <LinkContainer to={`/productos/${objeto.nombre}`}>
         <Card className="mx-0 p-0 border-rounded" as="button">
           <Card.Img variant="top" src={link} alt={objeto.nombre} />
           <Card.Body className="w-100 p-0 ">

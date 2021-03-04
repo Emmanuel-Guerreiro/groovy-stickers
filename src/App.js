@@ -8,6 +8,7 @@ import Productos from "./paginas/productos";
 import Contacto from "./paginas/contacto";
 import ComoComprar from "./paginas/comoComprar";
 import NotFound from "./paginas/notFound";
+import Stickers from "./paginas/stickers";
 
 //import componentes
 import Navegacion from "./Componentes/navegacion";
@@ -20,8 +21,8 @@ import PaginaPrueba from "./paginasPrueba/categoriaN";
 //TODO: Agrandar foto del icono en la barra de pestañas
 
 /*COMENTARIO de ESTADO:
-Arreglar la carga a firebase database para que esten los links, no las
- referencias a las imagenes
+Arreglar en firebase los nombres de las categorias, y pedir a las chicas que 
+acomoden los nombres para despues
 Editar Bootstrap para poner colores personalizados
 Ver de mejorar la barra de navegacion
 Como lograr la paginacion de los stickers
@@ -64,6 +65,12 @@ const App = () => {
             </Route>
             <Route path="/pruebaN">
               <PaginaPrueba />
+            </Route>
+            <Route path="/stickers">
+              <Stickers />
+            </Route>
+            <Route path={["/productos/:categoria", "/stickers/:categoria"]}>
+              <Stickers />
             </Route>
             <Route path="/">
               <NotFound />

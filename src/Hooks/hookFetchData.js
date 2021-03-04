@@ -12,13 +12,15 @@ se la pase haciendo querys y sature la capacidad gratis, hacer pruebas
 para ver si es indispensable 
 */
 
-const useFetchData = () => {
+const useFetchData = (coleccion) => {
   const [imagenes, setImagenes] = useState([]);
   const db = app.firestore();
 
   useEffect(() => {
     var arrayAyuda = [];
-    db.collection("categorias")
+    //Esta forma de definir la coleccion a la que llamar es consecuencia de
+    //un error que no me deja poner solo la variable
+    db.collection(coleccion)
       .get()
       .then((res) =>
         res.forEach((doc) => {

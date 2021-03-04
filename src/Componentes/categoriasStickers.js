@@ -18,11 +18,12 @@ const Categorias = () => {
 
   var imagenes = [];
 
-  imagenes = useFetchData();
+  imagenes = useFetchData("categorias");
 
   useEffect(() => {
     setTimeout(setLoading(false), 3000);
   }, []);
+
   let contenido;
   if (loading) {
     contenido = <Loader loading={loading} />;
